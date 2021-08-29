@@ -68,7 +68,7 @@ flutter:
   assets:
     - assets/images/emptycart.png
     - assets/images/carousel1.png
-    - assets/images/carousel2.jpeg
+    - assets/images/carousel2.jpg
     - assets/images/carousel3.jpg
     - assets/images/carousel4.png
     - assets/images/addidas.jpg
@@ -86,6 +86,8 @@ flutter:
     - assets/images/CatShoes.jpg
     - assets/images/CatWatches.jpg
     - assets/images/empty-wishlist.png
+    - assets/images/person_setting.png
+    - assets/images/person.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

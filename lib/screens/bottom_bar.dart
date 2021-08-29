@@ -16,7 +16,7 @@ class BottomBarScreen extends StatefulWidget {
 
 class _BottomBarScreenState extends State<BottomBarScreen> {
   // List<Map<String, Object>> _pages;
-  int _selectedPageIndex = 1;
+  int _selectedPageIndex = 0;
   List<Widget?>? pages;
   @override
   void initState() {
@@ -27,23 +27,6 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
       CartScreen(),
       UserInfo(),
     ];
-    // _pages = [
-    //   {
-    //     'page': Home(),
-    //   },
-    //   {
-    //     'page': Feeds(),
-    //   },
-    //   {
-    //     'page': Search(),
-    //   },
-    //   {
-    //     'page': CartScreen(),
-    //   },
-    //   {
-    //     'page': UserInfo(),
-    //   },
-    // ];
     super.initState();
   }
 

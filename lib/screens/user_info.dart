@@ -2,7 +2,6 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-// import 'package:flutter_icons/flutter_icons.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
 // import 'package:provider/provider.dart';
 import 'package:ship_qarte/components/colors.dart';
@@ -86,12 +85,7 @@ class _UserInfoState extends State<UserInfo> {
                   return Container(
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [
-                          COLORS.blueDark,
-                          COLORS.blueLight
-                          // ColorsConsts.starterColor,
-                          // ColorsConsts.endColor,
-                        ],
+                        colors: [COLORS.blueDark, COLORS.blackDark],
                         begin: FractionalOffset(0.0, 0.0),
                         end: FractionalOffset(1.0, 0.0),
                         stops: [0.0, 1.0],
@@ -112,6 +106,7 @@ class _UserInfoState extends State<UserInfo> {
                             Container(
                               height: kToolbarHeight / 1.8,
                               width: kToolbarHeight / 1.8,
+                              // ignore: prefer_const_constructors
                               decoration: BoxDecoration(
                                 // ignore: prefer_const_literals_to_create_immutables
                                 boxShadow: [
@@ -121,11 +116,13 @@ class _UserInfoState extends State<UserInfo> {
                                   ),
                                 ],
                                 shape: BoxShape.circle,
+                                // ignore: prefer_const_constructors
                                 image: DecorationImage(
-                                  fit: BoxFit.fill,
-                                  image: NetworkImage(_userImageUrl ??
-                                      'https://t3.ftcdn.net/jpg/01/83/55/76/240_F_183557656_DRcvOesmfDl5BIyhPKrcWANFKy2964i9.jpg'),
-                                ),
+                                    fit: BoxFit.fill,
+                                    image:
+                                        AssetImage('assets/images/person.png')
+                                    //image: NetworkImage(_userImageUrl ??'https://t3.ftcdn.net/jpg/01/83/55/76/240_F_183557656_DRcvOesmfDl5BIyhPKrcWANFKy2964i9.jpg'),
+                                    ),
                               ),
                             ),
                             SizedBox(width: 12),
@@ -138,9 +135,10 @@ class _UserInfoState extends State<UserInfo> {
                           ],
                         ),
                       ),
+                      // ignore: prefer_const_constructors
                       background: Image(
-                        image: NetworkImage(_userImageUrl ??
-                            'https://t3.ftcdn.net/jpg/01/83/55/76/240_F_183557656_DRcvOesmfDl5BIyhPKrcWANFKy2964i9.jpg'),
+                        image: AssetImage('assets/images/person.png'),
+                        // image: NetworkImage(_userImageUrl ??'https://t3.ftcdn.net/jpg/01/83/55/76/240_F_183557656_DRcvOesmfDl5BIyhPKrcWANFKy2964i9.jpg'),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -165,7 +163,10 @@ class _UserInfoState extends State<UserInfo> {
                         child: ListTile(
                           title: Text('Wishlist'),
                           trailing: Icon(Icons.chevron_right_rounded),
-                          leading: Icon(Icons.favorite),
+                          leading: Icon(
+                            Icons.favorite,
+                            color: COLORS.blueDark,
+                          ),
                         ),
                       ),
                     ),
@@ -175,40 +176,45 @@ class _UserInfoState extends State<UserInfo> {
                       },
                       title: Text('Cart'),
                       trailing: Icon(Icons.chevron_right_rounded),
-                      leading: Icon(Icons.shopping_cart),
+                      leading: const Icon(
+                        Icons.shopping_cart,
+                        color: COLORS.blueDark,
+                      ),
                     ),
-                    ListTile(
+                    const ListTile(
                       // onTap: () => Navigator.of(context)
                       //     .pushNamed(OrderScreen.routeName),
                       title: Text('My Orders'),
                       trailing: Icon(Icons.chevron_right_rounded),
-                      leading: Icon(Icons.shopping_bag_outlined),
+                      leading: Icon(
+                        Icons.shopping_bag_outlined,
+                        color: COLORS.blueDark,
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: userTitle(title: 'User Information'),
                     ),
-                    Divider(
-                      thickness: 1,
-                      color: Colors.grey,
-                    ),
-                    userListTile('Email', _email ?? '', 0, context),
+                    Divider(thickness: 1, color: Colors.grey),
                     userListTile(
-                        'Phone number', _phoneNumber.toString(), 1, context),
-                    userListTile('Shipping address', '', 2, context),
-                    userListTile('joined date', _joinedAt ?? '', 3, context),
+                        'Email', _email ?? 'abcdeg@xyz.com', 0, context),
+                    userListTile('Phone number', '8849982788', 1, context),
+                    userListTile('Shipping address', 'XYZ COLONY, Block 1, XYZ',
+                        2, context),
+                    userListTile(
+                        'joined date', _joinedAt ?? '12 Aug 2021', 3, context),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: userTitle(title: 'User settings'),
                     ),
-                    Divider(
-                      thickness: 1,
-                      color: Colors.grey,
-                    ),
+                    Divider(thickness: 1, color: Colors.grey),
                     ListTileSwitch(
                       // value: themeChange.darkTheme,
                       value: false,
-                      leading: Icon(Ionicons.md_moon),
+                      leading: Icon(
+                        Ionicons.md_moon,
+                        color: COLORS.blueDark,
+                      ),
                       onChanged: (value) {
                         // setState(() {
                         //   themeChange.darkTheme = value;
@@ -269,7 +275,10 @@ class _UserInfoState extends State<UserInfo> {
                                 });
                           },
                           title: Text('Logout'),
-                          leading: Icon(Icons.exit_to_app_rounded),
+                          leading: Icon(
+                            Icons.exit_to_app_rounded,
+                            color: COLORS.blueDark,
+                          ),
                         ),
                       ),
                     ),
@@ -285,22 +294,19 @@ class _UserInfoState extends State<UserInfo> {
   }
 
   Widget _buildFab() {
-    //starting fab position
-    final double defaultTopMargin = 200.0 - 4.0;
-    //pixels from top where scaling should start
-    final double scaleStart = 160.0;
-    //pixels from top where scaling should end
-    final double scaleEnd = scaleStart / 2;
+    const double defaultTopMargin = 200.0 - 4.0;
+    const double scaleStart = 160.0;
+    const double scaleEnd = scaleStart / 2;
 
     double top = defaultTopMargin;
-    double scale = 1.0;
+    double scale = 1;
     // if (_scrollController.hasClients) {
     //   double offset = _scrollController.offset;
     //   top -= offset;
     //   if (offset < defaultTopMargin - scaleStart) {
     //     //offset small => don't scale down
 
-    //     scale = 1.0;
+        // scale = 1.0;
     //   } else if (offset < defaultTopMargin - scaleEnd) {
     //     //offset between scaleStart and scaleEnd => scale down
 
@@ -318,7 +324,7 @@ class _UserInfoState extends State<UserInfo> {
         transform: Matrix4.identity()..scale(scale),
         alignment: Alignment.center,
         child: FloatingActionButton(
-          backgroundColor: Colors.purple,
+          backgroundColor: COLORS.blueDark,
           heroTag: "btn1",
           onPressed: () {},
           child: Icon(Icons.camera_alt_outlined),
@@ -339,15 +345,19 @@ class _UserInfoState extends State<UserInfo> {
   Widget userListTile(
       String title, String subTitle, int index, BuildContext context) {
     return ListTile(
+      onTap: () {},
       title: Text(title),
       subtitle: Text(subTitle),
-      leading: Icon(_userTileIcons[index]),
+      leading: Icon(
+        _userTileIcons[index],
+        color: COLORS.blueDark,
+      ),
     );
   }
 
   Widget userTitle({required String title}) {
     return Padding(
-      padding: const EdgeInsets.all(14.0),
+      padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 15),
       child: Text(
         title,
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),

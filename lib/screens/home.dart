@@ -6,6 +6,9 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:provider/provider.dart';
 import 'package:ship_qarte/components/colors.dart';
+import 'package:ship_qarte/components/size_config.dart';
+
+import 'widget/backlayer.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -15,7 +18,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final List _carouselImages = [
     'assets/images/carousel1.png',
-    'assets/images/carousel2.jpeg',
+    'assets/images/carousel2.jpg',
     'assets/images/carousel3.jpg',
     'assets/images/carousel4.png',
   ];
@@ -39,35 +42,168 @@ class _HomeState extends State<Home> {
     //print('popularItems length ${popularItems.length}');
     return Scaffold(
       body: BackdropScaffold(
+        backLayerBackgroundColor: COLORS.blueDark,
         frontLayerBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        headerHeight: MediaQuery.of(context).size.height * 0.25,
+        headerHeight: MediaQuery.of(context).size.height * 0.15,
         appBar: BackdropAppBar(
           title: Text("Home"),
+          backgroundColor: COLORS.blueDark,
           leading: BackdropToggleButton(icon: AnimatedIcons.home_menu),
-          flexibleSpace: Container(
-            // ignore: prefer_const_constructors
-            decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                    colors: [COLORS.blueDark, COLORS.blueLight])),
-          ),
+          // flexibleSpace: Container(
+          //     ignore: prefer_const_constructors
+          //     decoration: BoxDecoration(
+          //         gradient: const LinearGradient(
+          //             colors: [Colors.blue, Colors.blueAccent])),
+          //     ),
           actions: <Widget>[
             IconButton(
-              iconSize: 15,
+              //iconSize: 15,
               padding: const EdgeInsets.all(10),
-              icon: CircleAvatar(
+              icon: const CircleAvatar(
                 radius: 15,
                 backgroundColor: Colors.white,
                 child: CircleAvatar(
                   radius: 13,
-                  backgroundImage: NetworkImage(
-                      'https://cdn1.vectorstock.com/i/thumb-large/62/60/default-avatar-photo-placeholder-profile-image-vector-21666260.jpg'),
+                  backgroundImage: AssetImage('assets/images/person.png'),
+                  // backgroundImage: NetworkImage('https://cdn1.vectorstock.com/i/thumb-large/62/60/default-avatar-photo-placeholder-profile-image-vector-21666260.jpg'),
                 ),
               ),
               onPressed: () {},
             )
           ],
         ),
-        //backLayer: BackLayerMenu(),
+        backLayer: Column(
+          children: <Widget>[
+            Divider(
+                color: COLORS.whiteDark, height: 25, indent: 15, endIndent: 15),
+            ListTile(
+              onTap: () {
+                //Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
+              title: Text(
+                'Categories',
+                style: TextStyle(color: COLORS.whiteDark),
+              ),
+              // trailing: Icon(
+              //   Icons.chevron_right_rounded,
+              //   color: COLORS.greyWhite,
+              // ),
+              leading: const Icon(
+                Icons.category_outlined,
+                color: COLORS.whiteDark,
+                size: 22,
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                //Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
+              title: Text(
+                'Cart',
+                style: TextStyle(color: COLORS.whiteDark),
+              ),
+              // trailing: Icon(
+              //   Icons.chevron_right_rounded,
+              //   color: COLORS.greyWhite,
+              // ),
+              leading: const Icon(
+                Icons.shopping_cart_outlined,
+                color: COLORS.whiteDark,
+                size: 22,
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                //Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
+              title: Text(
+                'Wishlist',
+                style: TextStyle(color: COLORS.whiteDark),
+              ),
+              // trailing: Icon(
+              //   Icons.chevron_right_rounded,
+              //   color: COLORS.greyWhite,
+              // ),
+              leading: const Icon(
+                Icons.favorite_border,
+                color: COLORS.whiteDark,
+                size: 22,
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                //Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
+              title: Text(
+                'My Rewards',
+                style: TextStyle(color: COLORS.whiteDark),
+              ),
+              // trailing: Icon(
+              //   Icons.chevron_right_rounded,
+              //   color: COLORS.greyWhite,
+              // ),
+              leading: const Icon(
+                Icons.airplane_ticket_outlined,
+                color: COLORS.whiteDark,
+                size: 22,
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                //Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
+              title: Text(
+                'Profile',
+                style: TextStyle(color: COLORS.whiteDark),
+              ),
+              // trailing: Icon(
+              //   Icons.chevron_right_rounded,
+              //   color: COLORS.greyWhite,
+              // ),
+              leading: const Icon(
+                Icons.person_outline,
+                color: COLORS.whiteDark,
+                size: 22,
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                //Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
+              title: Text(
+                'My Orders',
+                style: TextStyle(color: COLORS.whiteDark),
+              ),
+              // trailing: Icon(
+              //   Icons.chevron_right_rounded,
+              //   color: COLORS.greyWhite,
+              // ),
+              leading: const Icon(
+                Icons.shopping_bag_outlined,
+                color: COLORS.whiteDark,
+                size: 22,
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                //Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
+              title: Text(
+                'Settings',
+                style: TextStyle(color: COLORS.whiteDark),
+              ),
+              // trailing: Icon(
+              //   Icons.chevron_right_rounded,
+              //   color: COLORS.greyWhite,
+              // ),
+              leading: const Icon(
+                Icons.settings,
+                color: COLORS.whiteDark,
+                size: 22,
+              ),
+            ),
+          ],
+        ),
         frontLayer: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +221,7 @@ class _HomeState extends State<Home> {
                   dotBgColor: Colors.black.withOpacity(0.2),
                   dotPosition: DotPosition.bottomCenter,
                   showIndicator: true,
-                  indicatorBgPadding: 5.0,
+                  indicatorBgPadding: 8.0,
                   images: [
                     ExactAssetImage(_carouselImages[0]),
                     ExactAssetImage(_carouselImages[1]),
@@ -95,16 +231,19 @@ class _HomeState extends State<Home> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.symmetric(
+                    vertical: SizeConfig.blockHeight * 2,
+                    horizontal: SizeConfig.blockHeight * 1),
                 child: Text(
                   'Categories',
-                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
+                  style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: SizeConfig.blockWidth * 6),
                 ),
               ),
               Container(
                 width: double.infinity,
-                height: 180,
-                color: Colors.red,
+                height: SizeConfig.blockHeight * 28,
                 // child: ListView.builder(
                 //   itemCount: 7,
                 //   scrollDirection: Axis.horizontal,
@@ -116,13 +255,16 @@ class _HomeState extends State<Home> {
                 // ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.symmetric(
+                    vertical: SizeConfig.blockHeight * 2,
+                    horizontal: SizeConfig.blockHeight * 1),
                 child: Row(
                   children: [
                     Text(
                       'Popular Brands',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontSize: SizeConfig.blockWidth * 6),
                     ),
                     Spacer(),
                     FlatButton(
@@ -135,10 +277,10 @@ class _HomeState extends State<Home> {
                         // );
                       },
                       child: Text(
-                        'View all...',
+                        'View all',
                         style: TextStyle(
                             fontWeight: FontWeight.w800,
-                            fontSize: 15,
+                            fontSize: SizeConfig.blockWidth * 4.5,
                             color: Colors.red),
                       ),
                     )
@@ -146,13 +288,13 @@ class _HomeState extends State<Home> {
                 ),
               ),
               Container(
-                height: 210,
-                width: MediaQuery.of(context).size.width * 0.95,
+                height: SizeConfig.blockHeight * 20,
+                width: MediaQuery.of(context).size.width * 1,
                 child: Swiper(
                   itemCount: _brandImages.length,
                   autoplay: true,
-                  viewportFraction: 0.8,
-                  scale: 0.9,
+                  viewportFraction: 0.4,
+                  scale: 0.05,
                   onTap: (index) {
                     // Navigator.of(context).pushNamed(
                     //   BrandNavigationRailScreen.routeName,
@@ -165,10 +307,10 @@ class _HomeState extends State<Home> {
                     return ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Container(
-                        color: Colors.blueGrey,
+                        color: Colors.white,
                         child: Image.asset(
                           _brandImages[index],
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                         ),
                       ),
                     );
@@ -176,13 +318,16 @@ class _HomeState extends State<Home> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.symmetric(
+                    vertical: SizeConfig.blockHeight * 2,
+                    horizontal: SizeConfig.blockHeight * 1),
                 child: Row(
                   children: [
                     Text(
                       'Popular Products',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w800, fontSize: 20),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w800,
+                          fontSize: SizeConfig.blockWidth * 6),
                     ),
                     Spacer(),
                     FlatButton(
@@ -191,10 +336,10 @@ class _HomeState extends State<Home> {
                         //     .pushNamed(Feeds.routeName, arguments: 'popular');
                       },
                       child: Text(
-                        'View all...',
+                        'View all',
                         style: TextStyle(
                             fontWeight: FontWeight.w800,
-                            fontSize: 15,
+                            fontSize: SizeConfig.blockWidth * 4.5,
                             color: Colors.red),
                       ),
                     )
