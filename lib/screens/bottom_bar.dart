@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ship_qarte/components/colors.dart';
 import 'package:ship_qarte/components/size_config.dart';
-
-import 'cart.dart';
 import 'feeds.dart';
 import 'home.dart';
 import 'search.dart';
+import 'ui.dart';
 import 'user_info.dart';
 
 class BottomBarScreen extends StatefulWidget {
@@ -24,7 +23,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
       Home(),
       Feeds(),
       Search(),
-      CartScreen(),
+      Cart(),
       UserInfo(),
     ];
     super.initState();

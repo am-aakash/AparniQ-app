@@ -32,7 +32,6 @@ class BackLayerMenu extends StatelessWidget {
               ),
               width: 150,
               height: 250,
-              child: content(context, () {}, "yo", 0),
             ),
           ),
         ),

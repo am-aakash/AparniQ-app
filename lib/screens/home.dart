@@ -9,6 +9,7 @@ import 'package:ship_qarte/components/colors.dart';
 import 'package:ship_qarte/components/size_config.dart';
 
 import 'widget/backlayer.dart';
+import 'widget/category.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -244,15 +245,15 @@ class _HomeState extends State<Home> {
               Container(
                 width: double.infinity,
                 height: SizeConfig.blockHeight * 28,
-                // child: ListView.builder(
-                //   itemCount: 7,
-                //   scrollDirection: Axis.horizontal,
-                //   itemBuilder: (BuildContext ctx, int index) {
-                //     return CategoryWidget(
-                //       index: index,
-                //     );
-                //   },
-                // ),
+                child: ListView.builder(
+                  itemCount: 7,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext ctx, int index) {
+                    return CategoryWidget(
+                      index: index,
+                    );
+                  },
+                ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -350,20 +351,6 @@ class _HomeState extends State<Home> {
                 width: double.infinity,
                 height: 285,
                 margin: EdgeInsets.symmetric(horizontal: 3),
-                // child: ListView.builder(
-                //     scrollDirection: Axis.horizontal,
-                //     itemCount: popularItems.length,
-                //     itemBuilder: (BuildContext ctx, int index) {
-                //       return ChangeNotifierProvider.value(
-                //         value: popularItems[index],
-                //         child: PopularProducts(
-                //             // imageUrl: popularItems[index].imageUrl,
-                //             // title: popularItems[index].title,
-                //             // description: popularItems[index].description,
-                //             // price: popularItems[index].price,
-                //             ),
-                //       );
-                //     }),
               )
             ],
           ),

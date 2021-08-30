@@ -1,9 +1,6 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
-// import 'package:provider/provider.dart';
 import 'package:ship_qarte/components/colors.dart';
 
 // import 'orders/order.dart';
@@ -16,7 +13,6 @@ class UserInfo extends StatefulWidget {
 class _UserInfoState extends State<UserInfo> {
   ScrollController? _scrollController;
   var top = 0.0;
-  //final FirebaseAuth _auth = FirebaseAuth.instance;
   String? _uid;
   String? _name;
   String? _email;
@@ -34,26 +30,7 @@ class _UserInfoState extends State<UserInfo> {
   }
 
   void getData() async {
-    // User user = _auth.currentUser;
     _uid = "5725721";
-
-    // print('user.displayName ${user.displayName}');
-    // print('user.photoURL ${user.photoURL}');
-    // final DocumentSnapshot userDoc = user.isAnonymous
-    //     ? null
-    //     : await FirebaseFirestore.instance.collection('users').doc(_uid).get();
-    // if (userDoc == null) {
-    //   return;
-    // } else {
-    //   setState(() {
-    //     _name = userDoc.get('name');
-    //     _email = user.email;
-    //     _joinedAt = userDoc.get('joinedAt');
-    //     _phoneNumber = userDoc.get('phoneNumber');
-    //     _userImageUrl = userDoc.get('imageUrl');
-    //   });
-    // }
-    // print("name $_name");
     setState(() {
       _name = "Aakash Chaudhary";
       _email = "akash12121@gmail.com";
@@ -74,7 +51,7 @@ class _UserInfoState extends State<UserInfo> {
             slivers: <Widget>[
               SliverAppBar(
                 // leading: Icon(Icons.ac_unit_outlined),
-                // automaticallyImplyLeading: false,
+                automaticallyImplyLeading: false,
                 elevation: 0,
                 expandedHeight: 200,
                 pinned: true,
@@ -154,12 +131,13 @@ class _UserInfoState extends State<UserInfo> {
                         padding: const EdgeInsets.only(left: 8.0),
                         child: userTitle(title: 'User Bag')),
                     Divider(thickness: 1, color: Colors.grey),
-                    const Material(
+                    Material(
                       color: Colors.transparent,
                       child: InkWell(
+                        onTap: () {},
                         // onTap: () => Navigator.of(context)
                         //     .pushNamed(WishlistScreen.routeName),
-                        splashColor: Colors.red,
+                        //splashColor: Colors.red,
                         child: ListTile(
                           title: Text('Wishlist'),
                           trailing: Icon(Icons.chevron_right_rounded),
@@ -181,7 +159,8 @@ class _UserInfoState extends State<UserInfo> {
                         color: COLORS.blueDark,
                       ),
                     ),
-                    const ListTile(
+                    ListTile(
+                      onTap: () {},
                       // onTap: () => Navigator.of(context)
                       //     .pushNamed(OrderScreen.routeName),
                       title: Text('My Orders'),
@@ -306,7 +285,7 @@ class _UserInfoState extends State<UserInfo> {
     //   if (offset < defaultTopMargin - scaleStart) {
     //     //offset small => don't scale down
 
-        // scale = 1.0;
+    // scale = 1.0;
     //   } else if (offset < defaultTopMargin - scaleEnd) {
     //     //offset between scaleStart and scaleEnd => scale down
 
