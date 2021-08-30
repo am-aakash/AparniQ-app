@@ -10,7 +10,7 @@ class Cart extends StatelessWidget {
         bottomSheet: checkoutSection(context),
         appBar: AppBar(
           backgroundColor: COLORS.blueDark,
-          title: Text('Cart Items Count'),
+          title: Text('Cart Items'),
           actions: [
             IconButton(
               onPressed: () {},

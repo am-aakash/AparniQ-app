@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ship_qarte/components/colors.dart';
 import 'package:ship_qarte/components/size_config.dart';
+import 'package:badges/badges.dart';
 
 class FeedProducts extends StatefulWidget {
   @override
@@ -14,21 +15,34 @@ class _FeedProductsState extends State<FeedProducts> {
       width: SizeConfig.blockWidth * 46,
       height: SizeConfig.blockHeight * 32,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6), color: COLORS.blueDark),
+          borderRadius: BorderRadius.circular(6), color: COLORS.blackMedium),
       child: Column(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(2),
-            child: Container(
-              width: double.infinity,
-              constraints: BoxConstraints(
-                  minHeight: 100,
-                  maxHeight: MediaQuery.of(context).size.height * 0.3),
-              child: Image.network(
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4PdHtXka2-bDDww6Nuect3Mt9IwpE4v4HNw&usqp=CAU',
-                fit: BoxFit.fitWidth,
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(2),
+                child: Container(
+                  width: double.infinity,
+                  constraints: BoxConstraints(
+                      minHeight: 100,
+                      maxHeight: MediaQuery.of(context).size.height * 0.3),
+                  child: Image.network(
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4PdHtXka2-bDDww6Nuect3Mt9IwpE4v4HNw&usqp=CAU',
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
               ),
-            ),
+              Badge(
+                toAnimate: true,
+                shape: BadgeShape.square,
+                badgeColor: COLORS.redDark,
+                borderRadius:
+                    BorderRadius.only(bottomRight: Radius.circular(5)),
+                badgeContent: Text('New',
+                    style: TextStyle(color: Colors.white, fontSize: 10)),
+              ),
+            ],
           ),
           Container(
             padding: EdgeInsets.only(left: 5),

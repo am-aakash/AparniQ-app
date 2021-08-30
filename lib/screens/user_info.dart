@@ -105,7 +105,7 @@ class _UserInfoState extends State<UserInfo> {
                             SizedBox(width: 12),
                             Text(
                               // 'top.toString()',
-                              _name ?? 'Guest',
+                              _name ?? 'User',
                               style: TextStyle(
                                   fontSize: 20.0, color: Colors.white),
                             ),

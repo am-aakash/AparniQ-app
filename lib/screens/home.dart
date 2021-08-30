@@ -7,6 +7,7 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:provider/provider.dart';
 import 'package:ship_qarte/components/colors.dart';
 import 'package:ship_qarte/components/size_config.dart';
+import 'package:ship_qarte/screens/widget/feeds_products.dart';
 
 import 'widget/backlayer.dart';
 import 'widget/category.dart';
@@ -349,8 +350,37 @@ class _HomeState extends State<Home> {
               ),
               Container(
                 width: double.infinity,
-                height: 285,
+                height: 230,
                 margin: EdgeInsets.symmetric(horizontal: 3),
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Container(
+                      //padding: EdgeInsets.only(left: 5),
+                      margin:
+                          EdgeInsets.only(left: 8, bottom: 5, right: 0, top: 2),
+                      child: FeedProducts(),
+                    ),
+                    Container(
+                      //padding: EdgeInsets.only(left: 5),
+                      margin:
+                          EdgeInsets.only(left: 8, bottom: 5, right: 0, top: 2),
+                      child: FeedProducts(),
+                    ),
+                    Container(
+                      //padding: EdgeInsets.only(left: 5),
+                      margin:
+                          EdgeInsets.only(left: 8, bottom: 5, right: 0, top: 2),
+                      child: FeedProducts(),
+                    ),
+                    Container(
+                      //padding: EdgeInsets.only(left: 5),
+                      margin:
+                          EdgeInsets.only(left: 8, bottom: 5, right: 0, top: 2),
+                      child: FeedProducts(),
+                    ),
+                  ],
+                ),
               )
             ],
           ),
