@@ -7,6 +7,7 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:provider/provider.dart';
 import 'package:ship_qarte/components/colors.dart';
 import 'package:ship_qarte/components/size_config.dart';
+import 'package:ship_qarte/screens/ui.dart';
 import 'package:ship_qarte/screens/widget/feeds_products.dart';
 
 import 'widget/backlayer.dart';
@@ -98,7 +99,7 @@ class _HomeState extends State<Home> {
             ),
             ListTile(
               onTap: () {
-                //Navigator.of(context).pushNamed(CartScreen.routeName);
+                Navigator.of(context).pushNamed(CartScreen.routeName);
               },
               title: Text(
                 'Cart',
@@ -116,7 +117,7 @@ class _HomeState extends State<Home> {
             ),
             ListTile(
               onTap: () {
-                //Navigator.of(context).pushNamed(CartScreen.routeName);
+                Navigator.of(context).pushNamed(WishlistScreen.routeName);
               },
               title: Text(
                 'Wishlist',
@@ -152,7 +153,12 @@ class _HomeState extends State<Home> {
             ),
             ListTile(
               onTap: () {
-                //Navigator.of(context).pushNamed(CartScreen.routeName);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UserInfo(),
+                  ),
+                );
               },
               title: Text(
                 'Profile',

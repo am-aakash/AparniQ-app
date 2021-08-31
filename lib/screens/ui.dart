@@ -1,6 +1,9 @@
 export 'bottom_bar.dart';
-export 'cart/cart.dart';
 export 'home.dart';
 export 'feeds.dart';
 export 'search.dart';
 export 'user_info.dart';
+export 'inner_screens/brands_rail_widget.dart';
+export 'inner_screens/brands_navigation_rail_copy.dart';
+export 'wishlist.dart';
+export 'cart.dart';

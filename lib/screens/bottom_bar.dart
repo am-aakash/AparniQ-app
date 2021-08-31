@@ -23,7 +23,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
       Home(),
       Feeds(),
       Search(),
-      Cart(),
+      CartScreen(),
       UserInfo(),
     ];
     super.initState();

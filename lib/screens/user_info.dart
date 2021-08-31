@@ -6,6 +6,7 @@ import 'package:ship_qarte/components/colors.dart';
 // import 'orders/order.dart';
 
 class UserInfo extends StatefulWidget {
+  static const routeName = '/UserInfo';
   @override
   _UserInfoState createState() => _UserInfoState();
 }
