@@ -61,7 +61,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
               onTap: _selectPage,
               backgroundColor: Theme.of(context).primaryColor,
               unselectedItemColor: Theme.of(context).textSelectionColor,
-              selectedItemColor: COLORS.blueDark,
+              selectedItemColor: Theme.of(context).selectedRowColor,
               currentIndex: _selectedPageIndex,
               // ignore: prefer_const_literals_to_create_immutables
               items: [

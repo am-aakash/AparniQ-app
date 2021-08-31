@@ -1,13 +1,16 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:ship_qarte/components/colors.dart';
 
 class Styles {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
     return ThemeData(
-     scaffoldBackgroundColor: isDarkTheme ? Colors.black :Colors.grey.shade300,
+      scaffoldBackgroundColor:
+          isDarkTheme ? Colors.black : Colors.grey.shade200,
       primarySwatch: Colors.purple,
       primaryColor: isDarkTheme ? Colors.black : Colors.grey.shade300,
+      selectedRowColor: isDarkTheme ? COLORS.greyWhite : COLORS.blueDark,
       accentColor: Colors.deepPurple,
       backgroundColor: isDarkTheme ? Colors.grey.shade700 : Colors.white,
       indicatorColor: isDarkTheme ? Color(0xff0E1D36) : Color(0xffCBDCF8),
@@ -17,7 +20,8 @@ class Styles {
       hoverColor: isDarkTheme ? Color(0xff3A3A3B) : Color(0xff4285F4),
       focusColor: isDarkTheme ? Color(0xff0B2512) : Color(0xffA8DAB5),
       disabledColor: Colors.grey,
-      textSelectionColor: isDarkTheme ? Colors.white : Colors.black,
+      textSelectionColor: isDarkTheme ? Colors.white54 : Colors.black26,
+      //iconSelectionColor: isDarkTheme ? COLORS.blueLight : COLORS.blueDark,
       cardColor: isDarkTheme ? Color(0xFF151515) : Colors.white,
       canvasColor: isDarkTheme ? Colors.black : Colors.grey[50],
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,

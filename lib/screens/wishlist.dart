@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ship_qarte/components/colors.dart';
 import 'widget/wishlist_empty.dart';
 import 'widget/wishlist_full.dart';
 
@@ -11,7 +12,8 @@ class WishlistScreen extends StatelessWidget {
         ? Scaffold(body: WishlistEmpty())
         : Scaffold(
             appBar: AppBar(
-              title: Text('Wishlist ()'),
+              backgroundColor: COLORS.blueDark,
+              title: Text('Wishlist'),
             ),
             body: ListView.builder(
               itemCount: 5,

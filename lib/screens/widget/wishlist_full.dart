@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ship_qarte/components/colors.dart';
 import 'package:ship_qarte/consts/colors.dart';
 
 class WishlistFull extends StatefulWidget {
@@ -13,7 +14,7 @@ class _WishlistFullState extends State<WishlistFull> {
       children: <Widget>[
         Container(
           width: double.infinity,
-          margin: EdgeInsets.only(right: 30.0, bottom: 10.0),
+          margin: EdgeInsets.only(right: 30.0, bottom: 0.0, top: 10),
           child: Material(
             color: Theme.of(context).backgroundColor,
             borderRadius: BorderRadius.circular(5.0),
@@ -21,6 +22,7 @@ class _WishlistFullState extends State<WishlistFull> {
             child: InkWell(
               onTap: () {},
               child: Container(
+                color: COLORS.blueDark,
                 padding: EdgeInsets.all(16.0),
                 child: Row(
                   children: <Widget>[
@@ -37,17 +39,21 @@ class _WishlistFullState extends State<WishlistFull> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'title',
+                            'Product Title',
                             style: TextStyle(
-                                fontSize: 16.0, fontWeight: FontWeight.bold),
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
                           ),
                           SizedBox(
                             height: 20.0,
                           ),
                           Text(
-                            "\$ 16",
+                            "Rs 516",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18.0),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18.0,
+                                color: Colors.white),
                           ),
                         ],
                       ),
@@ -68,8 +74,8 @@ class _WishlistFullState extends State<WishlistFull> {
       top: 20,
       right: 15,
       child: Container(
-        height: 30,
-        width: 30,
+        height: 25,
+        width: 25,
         child: MaterialButton(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),

@@ -69,113 +69,116 @@ class _BrandNavigationRailScreenState extends State<BrandNavigationRailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        children: <Widget>[
-          LayoutBuilder(
-            builder: (context, constraint) {
-              return SingleChildScrollView(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(minHeight: constraint.maxHeight),
-                  child: IntrinsicHeight(
-                    child: NavigationRail(
-                      minWidth: 56.0,
-                      groupAlignment: 1.0,
-                      selectedIndex: _selectedIndex,
-                      onDestinationSelected: (int index) {
-                        setState(() {
-                          _selectedIndex = index;
-                          if (_selectedIndex == 0) {
-                            setState(() {
-                              brand = 'Addidas';
-                            });
-                          }
-                          if (_selectedIndex == 1) {
-                            setState(() {
-                              brand = 'Apple';
-                            });
-                          }
-                          if (_selectedIndex == 2) {
-                            setState(() {
-                              brand = 'Dell';
-                            });
-                          }
-                          if (_selectedIndex == 3) {
-                            setState(() {
-                              brand = 'H&M';
-                            });
-                          }
-                          if (_selectedIndex == 4) {
-                            setState(() {
-                              brand = 'Nike';
-                            });
-                          }
-                          if (_selectedIndex == 5) {
-                            setState(() {
-                              brand = 'Samsung';
-                            });
-                          }
-                          if (_selectedIndex == 6) {
-                            setState(() {
-                              brand = 'Huawei';
-                            });
-                          }
-                          if (_selectedIndex == 7) {
-                            setState(() {
-                              brand = 'All';
-                            });
-                          }
-                          print(brand);
-                        });
-                      },
-                      labelType: NavigationRailLabelType.all,
-                      leading: Column(
-                        children: <Widget>[
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Center(
-                            child: CircleAvatar(
-                              radius: 16,
-                              backgroundImage: NetworkImage(
-                                  "https://cdn1.vectorstock.com/i/thumb-large/62/60/default-avatar-photo-placeholder-profile-image-vector-21666260.jpg"),
+      body: SafeArea(
+        child: Row(
+          children: <Widget>[
+            LayoutBuilder(
+              builder: (context, constraint) {
+                return SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints:
+                        BoxConstraints(minHeight: constraint.maxHeight),
+                    child: IntrinsicHeight(
+                      child: NavigationRail(
+                        minWidth: 56.0,
+                        groupAlignment: 1.0,
+                        selectedIndex: _selectedIndex,
+                        onDestinationSelected: (int index) {
+                          setState(() {
+                            _selectedIndex = index;
+                            if (_selectedIndex == 0) {
+                              setState(() {
+                                brand = 'Addidas';
+                              });
+                            }
+                            if (_selectedIndex == 1) {
+                              setState(() {
+                                brand = 'Apple';
+                              });
+                            }
+                            if (_selectedIndex == 2) {
+                              setState(() {
+                                brand = 'Dell';
+                              });
+                            }
+                            if (_selectedIndex == 3) {
+                              setState(() {
+                                brand = 'H&M';
+                              });
+                            }
+                            if (_selectedIndex == 4) {
+                              setState(() {
+                                brand = 'Nike';
+                              });
+                            }
+                            if (_selectedIndex == 5) {
+                              setState(() {
+                                brand = 'Samsung';
+                              });
+                            }
+                            if (_selectedIndex == 6) {
+                              setState(() {
+                                brand = 'Huawei';
+                              });
+                            }
+                            if (_selectedIndex == 7) {
+                              setState(() {
+                                brand = 'All';
+                              });
+                            }
+                            print(brand);
+                          });
+                        },
+                        labelType: NavigationRailLabelType.all,
+                        leading: Column(
+                          children: <Widget>[
+                            SizedBox(
+                              height: 20,
                             ),
-                          ),
-                          SizedBox(
-                            height: 80,
-                          ),
+                            Center(
+                              child: CircleAvatar(
+                                radius: 16,
+                                backgroundImage: NetworkImage(
+                                    "https://cdn1.vectorstock.com/i/thumb-large/62/60/default-avatar-photo-placeholder-profile-image-vector-21666260.jpg"),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 80,
+                            ),
+                          ],
+                        ),
+                        selectedLabelTextStyle: TextStyle(
+                          color: Color(0xffffe6bc97),
+                          fontSize: 20,
+                          letterSpacing: 1,
+                          decoration: TextDecoration.underline,
+                          decorationThickness: 2.5,
+                        ),
+                        unselectedLabelTextStyle: TextStyle(
+                          fontSize: 15,
+                          letterSpacing: 0.8,
+                        ),
+                        destinations: [
+                          buildRotatedTextRailDestination('Addidas', padding),
+                          buildRotatedTextRailDestination("Apple", padding),
+                          buildRotatedTextRailDestination("Dell", padding),
+                          buildRotatedTextRailDestination("H&M", padding),
+                          buildRotatedTextRailDestination("Nike", padding),
+                          buildRotatedTextRailDestination("Samsung", padding),
+                          buildRotatedTextRailDestination("Huawei", padding),
+                          buildRotatedTextRailDestination("All", padding),
                         ],
                       ),
-                      selectedLabelTextStyle: TextStyle(
-                        color: Color(0xffffe6bc97),
-                        fontSize: 20,
-                        letterSpacing: 1,
-                        decoration: TextDecoration.underline,
-                        decorationThickness: 2.5,
-                      ),
-                      unselectedLabelTextStyle: TextStyle(
-                        fontSize: 15,
-                        letterSpacing: 0.8,
-                      ),
-                      destinations: [
-                        buildRotatedTextRailDestination('Addidas', padding),
-                        buildRotatedTextRailDestination("Apple", padding),
-                        buildRotatedTextRailDestination("Dell", padding),
-                        buildRotatedTextRailDestination("H&M", padding),
-                        buildRotatedTextRailDestination("Nike", padding),
-                        buildRotatedTextRailDestination("Samsung", padding),
-                        buildRotatedTextRailDestination("Huawei", padding),
-                        buildRotatedTextRailDestination("All", padding),
-                      ],
                     ),
                   ),
-                ),
-              );
-            },
-          ),
-          // This is the main content.
+                );
+              },
+            ),
+            // This is the main content.
 
-          ContentSpace(context, brand!)
-        ],
+            ContentSpace(context, brand!)
+          ],
+        ),
       ),
     );
   }

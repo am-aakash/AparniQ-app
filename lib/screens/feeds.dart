@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ship_qarte/components/colors.dart';
 import 'package:ship_qarte/components/size_config.dart';
+import 'package:ship_qarte/screens/ui.dart';
 import 'package:ship_qarte/screens/widget/feeds_products.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -14,11 +15,15 @@ class Feeds extends StatelessWidget {
           title: Text('Feeds'),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(WishlistScreen.routeName);
+              },
               icon: Icon(Icons.favorite, color: Colors.red),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
               icon: Icon(Icons.shopping_cart, color: Colors.blue[200]),
             )
           ],

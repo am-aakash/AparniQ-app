@@ -55,6 +55,7 @@ class _MyAppState extends State<MyApp> {
         child:
             Consumer<DarkThemeProvider>(builder: (context, themeData, child) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
             home: BottomBarScreen(),

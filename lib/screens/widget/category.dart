@@ -68,14 +68,14 @@ class _CategoryWidgetState extends State<CategoryWidget> {
           left: 0,
           right: 10,
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            //color: Theme.of(context).backgroundColor,
+            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 0.0),
+            //color:
             child: Text(
               categories[widget.index]['categoryName'].toString(),
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 16,
-                color: COLORS.blueMedium,
+                color: Theme.of(context).textSelectionColor,
               ),
             ),
           ),

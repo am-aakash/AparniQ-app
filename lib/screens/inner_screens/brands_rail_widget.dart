@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ship_qarte/components/colors.dart';
 
 class BrandsNavigationRail extends StatelessWidget {
   @override
@@ -6,7 +7,7 @@ class BrandsNavigationRail extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Container(
-        color: Colors.red,
+        color: Colors.transparent,
         padding: EdgeInsets.only(left: 5.0, right: 5.0),
         margin: EdgeInsets.only(right: 20.0, bottom: 5, top: 18),
         constraints: BoxConstraints(
@@ -16,7 +17,8 @@ class BrandsNavigationRail extends StatelessWidget {
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).backgroundColor,
+                  color: Colors.white,
+                  // color: Theme.of(context).backgroundColor,
                   image: DecorationImage(
                       image: NetworkImage(
                         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4PdHtXka2-bDDww6Nuect3Mt9IwpE4v4HNw&usqp=CAU',
@@ -36,7 +38,8 @@ class BrandsNavigationRail extends StatelessWidget {
               child: Container(
                 margin: EdgeInsets.only(top: 20.0, bottom: 20.0),
                 decoration: BoxDecoration(
-                    color: Theme.of(context).backgroundColor,
+                    color: Colors.white,
+                    // color: Theme.of(context).backgroundColor,
                     borderRadius: BorderRadius.only(
                         bottomRight: Radius.circular(10.0),
                         topRight: Radius.circular(10.0)),
@@ -52,28 +55,28 @@ class BrandsNavigationRail extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'title',
+                      'Product Name',
                       maxLines: 4,
                       style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          color: Theme.of(context).textSelectionColor),
+                          fontWeight: FontWeight.w700, color: COLORS.blueDark),
                     ),
                     SizedBox(
                       height: 20.0,
                     ),
                     FittedBox(
-                      child: Text('US 16 \$',
+                      child: Text('Rs 516 ',
                           maxLines: 1,
                           style: TextStyle(
-                            color: Colors.red,
+                            color: COLORS.blueDark,
                             fontSize: 30.0,
                           )),
                     ),
                     SizedBox(
                       height: 20.0,
                     ),
-                    Text('CatergoryName',
-                        style: TextStyle(color: Colors.grey, fontSize: 18.0)),
+                    Text('Catergory',
+                        style: TextStyle(
+                            color: COLORS.blueMedium, fontSize: 18.0)),
                     SizedBox(
                       height: 20.0,
                     ),

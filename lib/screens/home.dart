@@ -277,12 +277,12 @@ class _HomeState extends State<Home> {
                     Spacer(),
                     FlatButton(
                       onPressed: () {
-                        // Navigator.of(context).pushNamed(
-                        //   BrandNavigationRailScreen.routeName,
-                        //   arguments: {
-                        //     7,
-                        //   },
-                        // );
+                        Navigator.of(context).pushNamed(
+                          BrandNavigationRailScreen.routeName,
+                          arguments: {
+                            7,
+                          },
+                        );
                       },
                       child: Text(
                         'View all',

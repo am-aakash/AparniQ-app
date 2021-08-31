@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:ship_qarte/bloc_or_providers/providers.dart';
+import 'package:ship_qarte/components/colors.dart';
 import 'package:ship_qarte/consts/colors.dart';
 
 class CartFull extends StatefulWidget {
@@ -21,17 +22,17 @@ class _CartFullState extends State<CartFull> {
           bottomRight: const Radius.circular(16.0),
           topRight: const Radius.circular(16.0),
         ),
-        color: Colors.blue,
+        color: COLORS.blueDark,
       ),
       child: Row(
         children: [
           Container(
-            width: 130,
+            width: 150,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: NetworkImage(
                     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4PdHtXka2-bDDww6Nuect3Mt9IwpE4v4HNw&usqp=CAU'),
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -45,11 +46,13 @@ class _CartFullState extends State<CartFull> {
                     children: [
                       Flexible(
                         child: Text(
-                          'title',
+                          '  Product Title',
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                              fontWeight: FontWeight.w600, fontSize: 15),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15,
+                              color: COLORS.whiteDark),
                         ),
                       ),
                       Material(
@@ -62,8 +65,8 @@ class _CartFullState extends State<CartFull> {
                             height: 50,
                             width: 50,
                             child: Icon(
-                              Entypo.cross,
-                              color: Colors.red,
+                              Icons.delete,
+                              color: Colors.red[400],
                               size: 22,
                             ),
                           ),
@@ -73,31 +76,41 @@ class _CartFullState extends State<CartFull> {
                   ),
                   Row(
                     children: [
-                      Text('Price:'),
+                      Text(
+                        'Price:',
+                        style: TextStyle(color: COLORS.whiteDark),
+                      ),
                       SizedBox(
                         width: 5,
                       ),
                       Text(
-                        '450\$',
+                        'Rs 450',
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: COLORS.whiteDark),
                       ),
                     ],
                   ),
                   Row(
                     children: [
-                      Text('Sub Total:'),
+                      Text(
+                        'Sub Total:',
+                        style: TextStyle(color: COLORS.whiteDark),
+                      ),
                       SizedBox(
                         width: 5,
                       ),
                       Text(
-                        '450\$',
+                        'Rs 450',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
-                            color: themeChange.darkTheme
-                                ? Colors.brown.shade900
-                                : Theme.of(context).accentColor),
+                            color:
+                                // themeChange.darkTheme
+                                //     ? Colors.brown.shade900
+                                //:
+                                Theme.of(context).accentColor),
                       ),
                     ],
                   ),
@@ -106,9 +119,11 @@ class _CartFullState extends State<CartFull> {
                       Text(
                         'Ships Free',
                         style: TextStyle(
-                            color: themeChange.darkTheme
-                                ? Colors.brown.shade900
-                                : Theme.of(context).accentColor),
+                            color:
+                                // themeChange.darkTheme
+                                // ? Colors.brown.shade900
+                                // :
+                                Theme.of(context).accentColor),
                       ),
                       Spacer(),
                       Material(
@@ -121,7 +136,7 @@ class _CartFullState extends State<CartFull> {
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Icon(
-                                Entypo.minus,
+                                Icons.remove,
                                 color: Colors.red,
                                 size: 22,
                               ),
@@ -135,16 +150,12 @@ class _CartFullState extends State<CartFull> {
                           width: MediaQuery.of(context).size.width * 0.12,
                           padding: const EdgeInsets.all(8.0),
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(colors: [
-                              ColorsConsts.gradiendLStart,
-                              ColorsConsts.gradiendLEnd,
-                            ], stops: [
-                              0.0,
-                              0.7
-                            ]),
+                            gradient: LinearGradient(
+                                colors: [COLORS.offWhite, COLORS.yellowDark],
+                                stops: [0.0, 0.7]),
                           ),
                           child: Text(
-                            '154',
+                            '4',
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -159,7 +170,7 @@ class _CartFullState extends State<CartFull> {
                             child: Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Icon(
-                                Entypo.plus,
+                                Icons.add,
                                 color: Colors.green,
                                 size: 22,
                               ),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
+import 'package:provider/provider.dart';
+import 'package:ship_qarte/bloc_or_providers/providers.dart';
 import 'package:ship_qarte/components/colors.dart';
+import 'package:ship_qarte/screens/ui.dart';
 
 // import 'orders/order.dart';
 
@@ -43,7 +46,7 @@ class _UserInfoState extends State<UserInfo> {
 
   @override
   Widget build(BuildContext context) {
-    //final themeChange = Provider.of<DarkThemeProvider>(context);
+    final themeChange = Provider.of<DarkThemeProvider>(context);
     return Scaffold(
       body: Stack(
         children: [
@@ -135,29 +138,29 @@ class _UserInfoState extends State<UserInfo> {
                     Material(
                       color: Colors.transparent,
                       child: InkWell(
-                        onTap: () {},
-                        // onTap: () => Navigator.of(context)
-                        //     .pushNamed(WishlistScreen.routeName),
-                        //splashColor: Colors.red,
+                        // onTap: () {},
+                        onTap: () => Navigator.of(context)
+                            .pushNamed(WishlistScreen.routeName),
+                        // splashColor: Colors.red,
                         child: ListTile(
                           title: Text('Wishlist'),
                           trailing: Icon(Icons.chevron_right_rounded),
                           leading: Icon(
                             Icons.favorite,
-                            color: COLORS.blueDark,
+                            color: Theme.of(context).selectedRowColor,
                           ),
                         ),
                       ),
                     ),
                     ListTile(
                       onTap: () {
-                        //Navigator.of(context).pushNamed(CartScreen.routeName);
+                        Navigator.of(context).pushNamed(CartScreen.routeName);
                       },
                       title: Text('Cart'),
                       trailing: Icon(Icons.chevron_right_rounded),
-                      leading: const Icon(
+                      leading: Icon(
                         Icons.shopping_cart,
-                        color: COLORS.blueDark,
+                        color: Theme.of(context).selectedRowColor,
                       ),
                     ),
                     ListTile(
@@ -168,7 +171,7 @@ class _UserInfoState extends State<UserInfo> {
                       trailing: Icon(Icons.chevron_right_rounded),
                       leading: Icon(
                         Icons.shopping_bag_outlined,
-                        color: COLORS.blueDark,
+                        color: Theme.of(context).selectedRowColor,
                       ),
                     ),
                     Padding(
@@ -189,16 +192,16 @@ class _UserInfoState extends State<UserInfo> {
                     ),
                     Divider(thickness: 1, color: Colors.grey),
                     ListTileSwitch(
-                      // value: themeChange.darkTheme,
-                      value: false,
+                      value: themeChange.darkTheme,
+                      //value: false,
                       leading: Icon(
                         Ionicons.md_moon,
-                        color: COLORS.blueDark,
+                        color: Theme.of(context).selectedRowColor,
                       ),
                       onChanged: (value) {
-                        // setState(() {
-                        //   themeChange.darkTheme = value;
-                        // });
+                        setState(() {
+                          themeChange.darkTheme = value;
+                        });
                       },
                       visualDensity: VisualDensity.comfortable,
                       switchType: SwitchType.cupertino,
@@ -211,7 +214,9 @@ class _UserInfoState extends State<UserInfo> {
                         splashColor: Theme.of(context).splashColor,
                         child: ListTile(
                           onTap: () async {
-                            // Navigator.canPop(context)? Navigator.pop(context):null;
+                            Navigator.canPop(context)
+                                ? Navigator.pop(context)
+                                : null;
                             showDialog(
                                 context: context,
                                 builder: (BuildContext ctx) {
@@ -257,7 +262,7 @@ class _UserInfoState extends State<UserInfo> {
                           title: Text('Logout'),
                           leading: Icon(
                             Icons.exit_to_app_rounded,
-                            color: COLORS.blueDark,
+                            color: Theme.of(context).selectedRowColor,
                           ),
                         ),
                       ),
@@ -330,7 +335,7 @@ class _UserInfoState extends State<UserInfo> {
       subtitle: Text(subTitle),
       leading: Icon(
         _userTileIcons[index],
-        color: COLORS.blueDark,
+        color: Theme.of(context).selectedRowColor,
       ),
     );
   }
