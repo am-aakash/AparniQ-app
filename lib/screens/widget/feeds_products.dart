@@ -2,8 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:ship_qarte/components/colors.dart';
 import 'package:ship_qarte/components/size_config.dart';
 import 'package:badges/badges.dart';
+import 'package:ship_qarte/models/models.dart';
 
 class FeedProducts extends StatefulWidget {
+  final String? id;
+  final String? title;
+  final String? description;
+  final double? price;
+  final String? imageUrl;
+  final String? productCategoryName;
+  final String? brand;
+  final int? quantity;
+  final bool? isFavorite;
+  final bool? isPopular;
+
+  const FeedProducts(
+      {Key? key,
+      this.id,
+      this.title,
+      this.description,
+      this.price,
+      this.imageUrl,
+      this.productCategoryName,
+      this.brand,
+      this.quantity,
+      this.isFavorite,
+      this.isPopular})
+      : super(key: key);
+
   @override
   _FeedProductsState createState() => _FeedProductsState();
 }
@@ -15,7 +41,7 @@ class _FeedProductsState extends State<FeedProducts> {
       width: SizeConfig.blockWidth * 46,
       height: SizeConfig.blockHeight * 32,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6), color: COLORS.blackMedium),
+          borderRadius: BorderRadius.circular(6), color: COLORS.blueDark),
       child: Column(
         children: [
           Stack(
@@ -25,11 +51,13 @@ class _FeedProductsState extends State<FeedProducts> {
                 child: Container(
                   width: double.infinity,
                   constraints: BoxConstraints(
-                      minHeight: 100,
-                      maxHeight: MediaQuery.of(context).size.height * 0.3),
+                    minHeight: MediaQuery.of(context).size.height * 0.32,
+                    maxHeight: MediaQuery.of(context).size.height * 0.33,
+                  ),
                   child: Image.network(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4PdHtXka2-bDDww6Nuect3Mt9IwpE4v4HNw&usqp=CAU',
-                    fit: BoxFit.fitWidth,
+                    '${widget.imageUrl}',
+                    fit: BoxFit.scaleDown,
+                    // fit: BoxFit.fitWidth,
                   ),
                 ),
               ),
@@ -54,7 +82,7 @@ class _FeedProductsState extends State<FeedProducts> {
                   height: 4,
                 ),
                 Text(
-                  'Product Name',
+                  '${widget.id}',
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                   style: TextStyle(
@@ -65,7 +93,7 @@ class _FeedProductsState extends State<FeedProducts> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
-                    'Rs 158.99',
+                    '₹${widget.price}',
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: TextStyle(
@@ -78,7 +106,7 @@ class _FeedProductsState extends State<FeedProducts> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Quantity: 12',
+                      'Quantity: ${widget.quantity}',
                       style: TextStyle(
                           fontSize: 12,
                           color: Colors.grey,
