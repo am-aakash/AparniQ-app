@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:ship_qarte/bloc_or_providers/products.dart';
 import 'package:ship_qarte/components/colors.dart';
 import 'package:ship_qarte/components/size_config.dart';
-import 'package:ship_qarte/data/products.dart';
 import 'package:ship_qarte/models/models.dart';
 import 'package:ship_qarte/screens/ui.dart';
 import 'package:ship_qarte/screens/widget/feeds_products.dart';
@@ -12,6 +13,8 @@ class Feeds extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final productsProvider = Provider.of<Products>(context);
+    List<Product> productsList = productsProvider.products;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: COLORS.blueDark,
@@ -52,14 +55,10 @@ class Feeds extends StatelessWidget {
           childAspectRatio: 0.51,
           crossAxisSpacing: 8,
           mainAxisSpacing: 8,
-          children: List.generate(products.length, (index) {
-            return FeedProducts(
-              id: products[index].id,
-              description: products[index].description,
-              price: products[index].price,
-              imageUrl: products[index].imageUrl,
-              quantity: products[index].quantity,
-              isFavorite: products[index].isFavorite,
+          children: List.generate(productsList.length, (index) {
+            return ChangeNotifierProvider.value(
+              value: productsList[index],
+              child: FeedProducts(),
             );
           }),
         ),

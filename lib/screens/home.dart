@@ -7,7 +7,6 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:provider/provider.dart';
 import 'package:ship_qarte/components/colors.dart';
 import 'package:ship_qarte/components/size_config.dart';
-import 'package:ship_qarte/data/products.dart';
 import 'package:ship_qarte/screens/ui.dart';
 import 'package:ship_qarte/screens/widget/feeds_products.dart';
 
@@ -359,23 +358,23 @@ class _HomeState extends State<Home> {
                 width: double.infinity,
                 height: SizeConfig.blockHeight * 50,
                 margin: EdgeInsets.symmetric(vertical: 5),
-                child: ListView.builder(
-                  itemBuilder: (BuildContext ctxt, int index) => Container(
-                    width: SizeConfig.blockWidth * 65,
-                    height: SizeConfig.blockHeight * 55,
-                    padding: const EdgeInsets.all(4.0),
-                    child: FeedProducts(
-                      id: products[index].id,
-                      description: products[index].description,
-                      price: products[index].price,
-                      imageUrl: products[index].imageUrl,
-                      quantity: products[index].quantity,
-                      isFavorite: products[index].isFavorite,
-                    ),
-                  ),
-                  itemCount: products.length,
-                  scrollDirection: Axis.horizontal,
-                ),
+                // child: ListView.builder(
+                //   itemBuilder: (BuildContext ctxt, int index) => Container(
+                //     width: SizeConfig.blockWidth * 65,
+                //     height: SizeConfig.blockHeight * 55,
+                //     padding: const EdgeInsets.all(4.0),
+                //     child: FeedProducts(
+                //       id: products[index].id,
+                //       description: products[index].description,
+                //       price: products[index].price,
+                //       imageUrl: products[index].imageUrl,
+                //       quantity: products[index].quantity,
+                //       isFavorite: products[index].isFavorite,
+                //     ),
+                //   ),
+                //   itemCount: products.length,
+                //   scrollDirection: Axis.horizontal,
+                // ),
               )
             ],
           ),
