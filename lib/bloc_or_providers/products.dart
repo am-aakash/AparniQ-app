@@ -127,12 +127,21 @@ class Products with ChangeNotifier {
     return [..._products];
   }
 
-  List findByCategory(String categoryName) {
-    List _categoryList = _products
-        .where((element) => (element.productCategoryName)!
+  List<Product> findByCategory(String categoryName) {
+    List<Product> _categoryList = _products
+        .where((element) => element.productCategoryName!
             .toLowerCase()
             .contains(categoryName.toLowerCase()))
         .toList();
     return _categoryList;
   }
+
+  // List findByCategory(String categoryName) {
+  //   List _categoryList = _products
+  //       .where((element) => (element.productCategoryName)!
+  //           .toLowerCase()
+  //           .contains(categoryName.toLowerCase()))
+  //       .toList();
+  //   return _categoryList;
+  // }
 }

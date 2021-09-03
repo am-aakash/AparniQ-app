@@ -52,7 +52,7 @@ class Feeds extends StatelessWidget {
         margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         child: GridView.count(
           crossAxisCount: 2,
-          childAspectRatio: 0.51,
+          childAspectRatio: 0.47,
           crossAxisSpacing: 8,
           mainAxisSpacing: 8,
           children: List.generate(productsList.length, (index) {

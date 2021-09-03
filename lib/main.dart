@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'bloc_or_providers/providers.dart';
 import 'consts/theme_data.dart';
+import 'screens/inner_screens/categories_feeds.dart';
+import 'screens/inner_screens/product_details.dart';
 import 'screens/ui.dart';
 
 void main() {
@@ -71,6 +73,8 @@ class _MyAppState extends State<MyApp> {
               Feeds.routeName: (ctx) => Feeds(),
               WishlistScreen.routeName: (ctx) => WishlistScreen(),
               //UserInfo.routename: (ctx) => UserInfo(),
+              ProductDetails.routeName: (ctx) => ProductDetails(),
+              CategoriesFeedsScreen.routeName: (ctx) => CategoriesFeedsScreen(),
             },
           );
         }));

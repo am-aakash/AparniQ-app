@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ship_qarte/components/colors.dart';
+import 'package:ship_qarte/screens/inner_screens/categories_feeds.dart';
 
 class CategoryWidget extends StatefulWidget {
   CategoryWidget({Key? key, required this.index}) : super(key: key);
@@ -47,7 +48,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
       children: [
         InkWell(
           onTap: () {
-            //Navigator.of(context).pushNamed(CategoriesFeedsScreen.routeName, arguments: '${categories[widget.index]['categoryName']}');
+            Navigator.of(context).pushNamed(CategoriesFeedsScreen.routeName,
+                arguments: '${categories[widget.index]['categoryName']}');
           },
           child: Container(
             decoration: BoxDecoration(

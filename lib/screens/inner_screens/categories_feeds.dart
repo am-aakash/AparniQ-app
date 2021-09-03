@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ship_qarte/bloc_or_providers/products.dart';
+import 'package:ship_qarte/models/models.dart';
 import 'package:ship_qarte/screens/widget/feeds_products.dart';
 
 class CategoriesFeedsScreen extends StatelessWidget {
@@ -8,22 +9,24 @@ class CategoriesFeedsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productsProvider = Provider.of<Products>(context, listen: false);
-    final categoryName = ModalRoute.of(context)!.settings.arguments as String;
-    print(categoryName);
-    final productsList = productsProvider.findByCategory(categoryName);
+    final categoryName = ModalRoute.of(context)?.settings.arguments as String;
+    final List<Product> productsList =
+        productsProvider.findByCategory(categoryName);
     return Scaffold(
-      body: GridView.count(
-        crossAxisCount: 2,
-        childAspectRatio: 240 / 420,
-        crossAxisSpacing: 8,
-        mainAxisSpacing: 8,
-        // children: List.generate(productsList.length, (index) {
-        //   return ChangeNotifierProvider.value(
-        //     value: productsList[index],
-        //     child: FeedProducts(
-        //     ),
-        //   );
-        // }),
+      body: Container(
+        margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+        child: GridView.count(
+          crossAxisCount: 2,
+          childAspectRatio: 0.47,
+          crossAxisSpacing: 8,
+          mainAxisSpacing: 8,
+          children: List.generate(productsList.length, (index) {
+            return ChangeNotifierProvider.value(
+              value: productsList[index],
+              child: FeedProducts(),
+            );
+          }),
+        ),
       ),
 //         StaggeredGridView.countBuilder(
 //           padding: ,
