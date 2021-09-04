@@ -21,6 +21,11 @@ class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
     final themeState = Provider.of<DarkThemeProvider>(context);
+    final productsData = Provider.of<Products>(context);
+    final productId = ModalRoute.of(context)!.settings.arguments as String;
+    print('productId $productId');
+    final prodAttr = productsData.findById(productId);
+    final productsList = productsData.products;
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -30,7 +35,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               height: MediaQuery.of(context).size.height * 0.45,
               width: double.infinity,
               child: Image.network(
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4PdHtXka2-bDDww6Nuect3Mt9IwpE4v4HNw&usqp=CAU',
+                prodAttr.imageUrl!,
               ),
             ),
             SingleChildScrollView(
@@ -93,7 +98,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.9,
                                 child: Text(
-                                  'title',
+                                  prodAttr.title!,
                                   maxLines: 2,
                                   style: TextStyle(
                                     // color: Theme.of(context).textSelectionColor,
@@ -106,7 +111,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 height: 8,
                               ),
                               Text(
-                                'US \$ 15',
+                                '₹ ${((prodAttr.price)! * 191).toStringAsFixed(2)}',
                                 style: TextStyle(
                                     color: themeState.darkTheme
                                         ? Theme.of(context).disabledColor
@@ -131,7 +136,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Text(
-                            'Description',
+                            prodAttr.description!,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 21.0,
@@ -225,14 +230,21 @@ class _ProductDetailsState extends State<ProductDetails> {
                   Container(
                     margin: EdgeInsets.only(bottom: 30),
                     width: double.infinity,
-                    height: 300,
-                    // child: ListView.builder(
-                    //   itemCount: 7,
-                    //   scrollDirection: Axis.horizontal,
-                    //   itemBuilder: (BuildContext ctx, int index) {
-                    //     return FeedProducts();
-                    //   },
-                    // ),
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                    height: 340,
+                    child: ListView.builder(
+                      itemCount: 7,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (BuildContext ctx, int index) {
+                        return ChangeNotifierProvider.value(
+                            value: productsList[index],
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  left: 1, right: 8, bottom: 8, top: 5),
+                              child: FeedProducts(),
+                            ));
+                      },
+                    ),
                   ),
                 ],
               ),

@@ -80,7 +80,7 @@ class _FeedProductsState extends State<FeedProducts> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Text(
-                      '₹ ${((productsAttributes.price)! * 71).toStringAsFixed(2)}',
+                      '₹ ${((productsAttributes.price)! * 191).toStringAsFixed(2)}',
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                       style: TextStyle(

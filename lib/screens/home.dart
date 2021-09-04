@@ -5,10 +5,12 @@ import 'package:backdrop/scaffold.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:provider/provider.dart';
+import 'package:ship_qarte/bloc_or_providers/providers.dart';
 import 'package:ship_qarte/components/colors.dart';
 import 'package:ship_qarte/components/size_config.dart';
 import 'package:ship_qarte/screens/ui.dart';
 import 'package:ship_qarte/screens/widget/feeds_products.dart';
+import 'package:ship_qarte/screens/widget/popular_products.dart';
 
 import 'widget/backlayer.dart';
 import 'widget/category.dart';
@@ -38,10 +40,10 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    // final productsData = Provider.of<Products>(context);
+    final productsData = Provider.of<Products>(context);
     // productsData.fetchProducts();
 
-    // final popularItems = productsData.popularProducts;
+    final popularItems = productsData.popularProducts;
     //print('popularItems length ${popularItems.length}');
     return Scaffold(
       body: BackdropScaffold(
@@ -81,10 +83,13 @@ class _HomeState extends State<Home> {
                 color: COLORS.whiteDark, height: 25, indent: 15, endIndent: 15),
             ListTile(
               onTap: () {
-                //Navigator.of(context).pushNamed(CartScreen.routeName);
+                Navigator.of(context).pushNamed(
+                  BrandNavigationRailScreen.routeName,
+                  arguments: {7},
+                );
               },
               title: Text(
-                'Categories',
+                'Top Brands',
                 style: TextStyle(color: COLORS.whiteDark),
               ),
               // trailing: Icon(
@@ -277,12 +282,7 @@ class _HomeState extends State<Home> {
                     Spacer(),
                     FlatButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed(
-                          BrandNavigationRailScreen.routeName,
-                          arguments: {
-                            7,
-                          },
-                        );
+                        Navigator.of(context).pushNamed(Feeds.routeName);
                       },
                       child: Text(
                         'View all',
@@ -296,29 +296,30 @@ class _HomeState extends State<Home> {
                 ),
               ),
               Container(
-                height: SizeConfig.blockHeight * 20,
+                height: SizeConfig.blockHeight * 22,
                 width: MediaQuery.of(context).size.width * 1,
                 child: Swiper(
                   itemCount: _brandImages.length,
                   autoplay: true,
-                  viewportFraction: 0.4,
-                  scale: 0.05,
+                  viewportFraction: 0.55,
+                  scale: 0.4,
                   onTap: (index) {
-                    // Navigator.of(context).pushNamed(
-                    //   BrandNavigationRailScreen.routeName,
-                    //   arguments: {
-                    //     index,
-                    //   },
-                    // );
+                    Navigator.of(context).pushNamed(
+                      BrandNavigationRailScreen.routeName,
+                      arguments: {
+                        index,
+                      },
+                    );
                   },
                   itemBuilder: (BuildContext ctx, int index) {
                     return ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Container(
+                        padding: EdgeInsets.all(8),
                         color: Colors.white,
                         child: Image.asset(
                           _brandImages[index],
-                          fit: BoxFit.cover,
+                          fit: BoxFit.scaleDown,
                         ),
                       ),
                     );
@@ -356,8 +357,22 @@ class _HomeState extends State<Home> {
               ),
               Container(
                 width: double.infinity,
-                height: SizeConfig.blockHeight * 50,
+                height: SizeConfig.blockHeight * 40,
                 margin: EdgeInsets.symmetric(vertical: 5),
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: popularItems.length,
+                    itemBuilder: (BuildContext ctx, int index) {
+                      return ChangeNotifierProvider.value(
+                        value: popularItems[index],
+                        child: PopularProducts(
+                            // imageUrl: popularItems[index].imageUrl,
+                            // title: popularItems[index].title,
+                            // description: popularItems[index].description,
+                            // price: popularItems[index].price,
+                            ),
+                      );
+                    }),
                 // child: ListView.builder(
                 //   itemBuilder: (BuildContext ctxt, int index) => Container(
                 //     width: SizeConfig.blockWidth * 65,

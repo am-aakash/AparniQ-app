@@ -6,8 +6,7 @@ import 'package:ship_qarte/components/colors.dart';
 class Styles {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
     return ThemeData(
-      scaffoldBackgroundColor:
-          isDarkTheme ? Colors.black : Colors.grey.shade200,
+      scaffoldBackgroundColor: isDarkTheme ? Colors.black : COLORS.whiteDark,
       primarySwatch: Colors.purple,
       primaryColor: isDarkTheme ? Colors.black : Colors.grey.shade300,
       selectedRowColor: isDarkTheme ? COLORS.greyWhite : COLORS.blueDark,

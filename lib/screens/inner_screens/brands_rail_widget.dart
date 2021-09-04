@@ -1,29 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:ship_qarte/components/colors.dart';
+import 'package:ship_qarte/models/models.dart';
+import 'package:ship_qarte/screens/inner_screens/product_details.dart';
 
 class BrandsNavigationRail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final productsAttributes = Provider.of<Product>(context);
     return InkWell(
-      onTap: () {},
+      onTap: () => Navigator.pushNamed(context, ProductDetails.routeName,
+          arguments: productsAttributes.id),
       child: Container(
         color: Colors.transparent,
         padding: EdgeInsets.only(left: 5.0, right: 5.0),
-        margin: EdgeInsets.only(right: 20.0, bottom: 5, top: 18),
+        margin: EdgeInsets.only(right: 10.0, bottom: 5, top: 18),
         constraints: BoxConstraints(
             minHeight: 150, minWidth: double.infinity, maxHeight: 180),
         child: Row(
           children: <Widget>[
             Expanded(
               child: Container(
+                // padding: EdgeInsets.only(left: 2, right: 2),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   // color: Theme.of(context).backgroundColor,
                   image: DecorationImage(
                       image: NetworkImage(
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4PdHtXka2-bDDww6Nuect3Mt9IwpE4v4HNw&usqp=CAU',
+                        productsAttributes.imageUrl!,
                       ),
-                      fit: BoxFit.contain),
+                      fit: BoxFit.scaleDown),
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   boxShadow: [
                     BoxShadow(
@@ -55,7 +61,7 @@ class BrandsNavigationRail extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Product Name',
+                      productsAttributes.title!,
                       maxLines: 4,
                       style: TextStyle(
                           fontWeight: FontWeight.w700, color: COLORS.blueDark),
@@ -64,7 +70,7 @@ class BrandsNavigationRail extends StatelessWidget {
                       height: 20.0,
                     ),
                     FittedBox(
-                      child: Text('Rs 516 ',
+                      child: Text('₹ ${productsAttributes.price}',
                           maxLines: 1,
                           style: TextStyle(
                             color: COLORS.blueDark,
@@ -74,7 +80,7 @@ class BrandsNavigationRail extends StatelessWidget {
                     SizedBox(
                       height: 20.0,
                     ),
-                    Text('Catergory',
+                    Text(productsAttributes.productCategoryName!,
                         style: TextStyle(
                             color: COLORS.blueMedium, fontSize: 18.0)),
                     SizedBox(

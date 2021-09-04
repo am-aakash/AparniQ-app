@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:provider/provider.dart';
+import 'package:ship_qarte/components/colors.dart';
+import 'package:ship_qarte/models/product.dart';
+import 'package:ship_qarte/screens/inner_screens/product_details.dart';
 
 class PopularProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final productsAttributes = Provider.of<Product>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
         width: 250,
         decoration: BoxDecoration(
-          color: Theme.of(context).backgroundColor,
+          color: COLORS.whiteDark,
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(
               10.0,
@@ -20,12 +25,14 @@ class PopularProducts extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-           borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(
-              10.0,
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(
+                10.0,
+              ),
+              bottomRight: Radius.circular(10.0),
             ),
-            bottomRight: Radius.circular(10.0),),
-            onTap: (){},
+            onTap: () => Navigator.pushNamed(context, ProductDetails.routeName,
+                arguments: productsAttributes.id),
             child: Column(
               children: [
                 Stack(
@@ -34,24 +41,23 @@ class PopularProducts extends StatelessWidget {
                       height: 170,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: NetworkImage(
-                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4PdHtXka2-bDDww6Nuect3Mt9IwpE4v4HNw&usqp=CAU'),
-                              fit: BoxFit.fill)),
+                              image: NetworkImage(productsAttributes.imageUrl!),
+                              fit: BoxFit.scaleDown)),
                     ),
-                    Positioned(
-                      right: 12,
-                      top: 10,
-                      child: Icon(
-                        Entypo.star,
-                        color: Colors.grey.shade800,
-                      ),
-                    ),
+                    // Positioned(
+                    //   right: 12,
+                    //   top: 10,
+                    //   child: Icon(
+                    //     Icons.star,
+                    //     color: Colors.grey.shade800,
+                    //   ),
+                    // ),
                     Positioned(
                       right: 10,
                       top: 7,
                       child: Icon(
-                        Entypo.star_outlined,
-                        color: Colors.white,
+                        Icons.star_border,
+                        color: COLORS.blueDark,
                       ),
                     ),
                     Positioned(
@@ -59,11 +65,11 @@ class PopularProducts extends StatelessWidget {
                       bottom: 32.0,
                       child: Container(
                         padding: EdgeInsets.all(10.0),
-                        color: Theme.of(context).backgroundColor,
+                        color: COLORS.blueDark,
                         child: Text(
-                          '\$ 12.2',
+                          '₹ ${((productsAttributes.price)! * 191).toStringAsFixed(0)} ',
                           style: TextStyle(
-                            color: Theme.of(context).textSelectionColor,
+                            color: COLORS.whiteDark,
                           ),
                         ),
                       ),
@@ -76,21 +82,27 @@ class PopularProducts extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Title',
+                        productsAttributes.title!,
                         maxLines: 1,
-                        style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: COLORS.blueDark,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold),
                       ),
                       Row(
-                     //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'Description',
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.grey[800],
+                          Container(
+                            width: 160,
+                            child: Text(
+                              productsAttributes.description!,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey[800],
+                              ),
                             ),
                           ),
                           Spacer(),
