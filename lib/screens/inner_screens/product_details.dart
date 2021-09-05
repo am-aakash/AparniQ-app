@@ -23,6 +23,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     final themeState = Provider.of<DarkThemeProvider>(context);
     final productsData = Provider.of<Products>(context);
     final productId = ModalRoute.of(context)!.settings.arguments as String;
+    final cartProvider = Provider.of<CartProvider>(context);
     print('productId $productId');
     final prodAttr = productsData.findById(productId);
     final productsList = productsData.products;
@@ -296,9 +297,27 @@ class _ProductDetailsState extends State<ProductDetails> {
                         shape: RoundedRectangleBorder(side: BorderSide.none),
                         color: Colors.redAccent.shade400,
                         onPressed: () {},
-                        child: Text(
-                          'Add to Cart'.toUpperCase(),
-                          style: TextStyle(fontSize: 16, color: Colors.white),
+                        child: RaisedButton(
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          shape: RoundedRectangleBorder(side: BorderSide.none),
+                          color: Colors.redAccent.shade400,
+                          onPressed:
+                              cartProvider.getCartItems.containsKey(productId)
+                                  ? () {}
+                                  : () {
+                                      cartProvider.addProductToCart(
+                                          productId,
+                                          prodAttr.price!,
+                                          prodAttr.title!,
+                                          prodAttr.imageUrl!);
+                                    },
+                          child: Text(
+                            cartProvider.getCartItems.containsKey(productId)
+                                ? 'In cart'
+                                : 'Add to Cart'.toUpperCase(),
+                            style: TextStyle(fontSize: 16, color: Colors.white),
+                          ),
                         ),
                       ),
                     ),
