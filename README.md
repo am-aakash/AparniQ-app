@@ -1,2 +1,2 @@
-# Ship Qart-E
-Ecommerce App to find everything
+# AparniQ
+Market at your place
