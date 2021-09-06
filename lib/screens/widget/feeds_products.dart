@@ -16,14 +16,8 @@ class _FeedProductsState extends State<FeedProducts> {
   Widget build(BuildContext context) {
     final productsAttributes = Provider.of<Product>(context);
     return InkWell(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ProductDetails(),
-          ),
-        );
-      },
+      onTap: () => Navigator.pushNamed(context, ProductDetails.routeName,
+          arguments: productsAttributes.id),
       child: Container(
         width: SizeConfig.blockWidth * 46,
         height: SizeConfig.blockHeight * 32,

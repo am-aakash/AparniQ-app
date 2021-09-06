@@ -42,13 +42,13 @@ class _CartFullState extends State<CartFull> {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(cartAttr.imageUrl!),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.scaleDown,
                 ),
               ),
             ),
             Flexible(
               child: Padding(
-                padding: const EdgeInsets.all(2.0),
+                padding: const EdgeInsets.only(left: 6, top: 2),
                 child: Column(
                   children: [
                     Row(
@@ -84,24 +84,24 @@ class _CartFullState extends State<CartFull> {
                         ),
                       ],
                     ),
-                    Row(
-                      children: [
-                        Text(
-                          'Price:',
-                          style: TextStyle(color: COLORS.whiteDark),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          'Rs ${cartAttr.price}',
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: COLORS.whiteDark),
-                        ),
-                      ],
-                    ),
+                    // Row(
+                    //   children: [
+                    //     Text(
+                    //       'Price:',
+                    //       style: TextStyle(color: COLORS.whiteDark),
+                    //     ),
+                    //     SizedBox(
+                    //       width: 5,
+                    //     ),
+                    //     Text(
+                    //       'Rs ${cartAttr.price}',
+                    //       style: TextStyle(
+                    //           fontSize: 14,
+                    //           fontWeight: FontWeight.w600,
+                    //           color: COLORS.whiteDark),
+                    //     ),
+                    //   ],
+                    // ),
                     Row(
                       children: [
                         Text(
@@ -114,16 +114,17 @@ class _CartFullState extends State<CartFull> {
                         Text(
                           'Rs ${subTotal.toStringAsFixed(2)}',
                           style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 18,
                               fontWeight: FontWeight.w600,
                               color:
                                   // themeChange.darkTheme
                                   //     ? Colors.brown.shade900
                                   //:
-                                  Theme.of(context).accentColor),
+                                  COLORS.whiteDark),
                         ),
                       ],
                     ),
+                    SizedBox(height: 10),
                     Row(
                       children: [
                         Text(
